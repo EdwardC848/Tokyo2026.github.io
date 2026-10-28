@@ -1,0 +1,995 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🏃‍♂️ 10天東京馬拉松與冬日燈飾完整行程路線圖 (12/10 - 12/19)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        indigo: {
+                            950: '#0b132b',
+                            900: '#1c2541',
+                            800: '#2a3342',
+                        },
+                        gold: {
+                            300: '#ffe082',
+                            400: '#ffd54f',
+                            500: '#ffca28',
+                            600: '#ffb300',
+                        },
+                        jrorange: '#F15A22',
+                        jryellow: '#FFD400',
+                        jrgreen: '#7CB342'
+                    },
+                    fontFamily: {
+                        sans: ['"Noto Sans TC"', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #0b132b;
+            color: #e2e8f0;
+            background-image: 
+                radial-gradient(circle at 10% 10%, rgba(255, 213, 79, 0.05) 0%, transparent 25%),
+                radial-gradient(circle at 90% 80%, rgba(56, 189, 248, 0.05) 0%, transparent 30%);
+            background-attachment: fixed;
+        }
+
+        .glass-panel {
+            background: rgba(28, 37, 65, 0.78);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .glass-panel-gold {
+            background: rgba(28, 37, 65, 0.88);
+            backdrop-filter: blur(14px);
+            border: 1px solid rgba(255, 202, 40, 0.35);
+            box-shadow: 0 0 20px rgba(255, 202, 40, 0.15);
+        }
+
+        .drawer-slide {
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .scrollbar-thin::-webkit-scrollbar {
+            height: 6px;
+            width: 6px;
+        }
+        .scrollbar-thin::-webkit-scrollbar-track {
+            background: rgba(11, 19, 43, 0.5);
+        }
+        .scrollbar-thin::-webkit-scrollbar-thumb {
+            background: rgba(255, 202, 40, 0.3);
+            border-radius: 3px;
+        }
+
+        @media print {
+            body { background: white !important; color: black !important; }
+            .no-print { display: none !important; }
+            .glass-panel, .glass-panel-gold {
+                background: white !important;
+                border: 1px solid #ccc !important;
+                color: black !important;
+                box-shadow: none !important;
+            }
+            .text-white, .text-slate-200, .text-slate-300 { color: #111 !important; }
+        }
+    </style>
+</head>
+<body class="min-h-screen pb-12 pt-4 px-3 sm:px-6 lg:px-8 max-w-6xl mx-auto">
+
+    <!-- Header Section -->
+    <header class="text-center mb-6">
+        <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-gold-500/10 border border-gold-400/30 text-gold-400 text-xs sm:text-sm font-medium mb-2">
+            <i class="fa-solid fa-person-running"></i>
+            <span>2026年12月10日 - 12月19日 (10天9夜)</span>
+        </div>
+        <h1 class="text-2xl sm:text-4xl font-extrabold text-white tracking-tight mb-2">
+            🏃‍♂️ 12月東京馬拉松與冬日燈飾完整路線圖
+        </h1>
+        <p class="text-slate-300 text-xs sm:text-sm max-w-2xl mx-auto">
+            新宿出發 ➔ 河口湖馬拉松 ➔ 冬日銀杏 ➔ 聖誕燈飾購物 ➔ 成田山鰻魚飯巡禮
+        </p>
+
+        <!-- Utility Bar -->
+        <div class="mt-4 flex flex-wrap justify-center gap-2.5 no-print">
+            <button onclick="window.print()" class="px-3.5 py-1.5 bg-indigo-800 hover:bg-indigo-700 text-slate-100 rounded-lg text-xs sm:text-sm font-medium border border-slate-600 transition flex items-center gap-1.5">
+                <i class="fa-solid fa-print"></i> 列印 / 儲存 PDF
+            </button>
+            <button onclick="shareItinerary()" class="px-3.5 py-1.5 bg-gold-500 hover:bg-gold-400 text-indigo-950 rounded-lg text-xs sm:text-sm font-bold shadow-md transition flex items-center gap-1.5">
+                <i class="fa-solid fa-share-nodes"></i> 分享行程網址
+            </button>
+        </div>
+
+        <!-- Flight Group Toggle Switch -->
+        <div class="mt-5 p-3 glass-panel-gold rounded-2xl max-w-xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3 no-print">
+            <div class="text-xs text-gold-300 font-bold flex items-center gap-2">
+                <i class="fa-solid fa-plane-departure text-gold-400 text-base"></i>
+                <span>回港班機隊伍選擇 (Departure Group)：</span>
+            </div>
+            <div class="flex items-center gap-2 w-full sm:w-auto">
+                <button onclick="setFlightGroup(1)" id="group-btn-1" class="flex-1 sm:flex-none px-3 py-1.5 rounded-xl text-xs font-bold transition flex items-center justify-center gap-1.5 border border-gold-400/50 bg-gold-500 text-indigo-950 shadow">
+                    <i class="fa-solid fa-users text-[11px]"></i> 第一組 (12/18 21:00起飛)
+                </button>
+                <button onclick="setFlightGroup(2)" id="group-btn-2" class="flex-1 sm:flex-none px-3 py-1.5 rounded-xl text-xs font-bold transition flex items-center justify-center gap-1.5 border border-slate-700 bg-indigo-900 text-slate-300 hover:bg-indigo-800">
+                    <i class="fa-solid fa-users text-[11px]"></i> 第二組 (12/19 21:00起飛)
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation Tabs (Dec 10 - Dec 19 + All Days) -->
+    <nav class="mb-8 no-print">
+        <div class="flex overflow-x-auto space-x-2 pb-2 scrollbar-thin">
+            <button onclick="switchDay('all')" id="tab-all" class="day-tab flex-shrink-0 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold transition flex flex-col items-center border border-slate-700 min-w-[90px] bg-indigo-900 text-slate-300 hover:bg-indigo-800">
+                <span>全行程流向</span>
+                <span class="text-[10px] font-normal text-slate-400">10 天完整時間軸</span>
+            </button>
+            <button onclick="switchDay(10)" id="tab-10" class="day-tab flex-shrink-0 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold transition flex flex-col items-center border border-slate-700 min-w-[85px] bg-indigo-900 text-slate-300 hover:bg-indigo-800">
+                <span>12/10 (四)</span>
+                <span class="text-[10px] font-normal text-slate-400">抵達東京</span>
+            </button>
+            <button onclick="switchDay(11)" id="tab-11" class="day-tab flex-shrink-0 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold transition flex flex-col items-center border border-slate-700 min-w-[85px] bg-indigo-900 text-slate-300 hover:bg-indigo-800">
+                <span>12/11 (五)</span>
+                <span class="text-[10px] font-normal text-slate-400">物資與巨蛋</span>
+            </button>
+            <button onclick="switchDay(12)" id="tab-12" class="day-tab flex-shrink-0 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold transition flex flex-col items-center border border-slate-700 min-w-[85px] bg-indigo-900 text-slate-300 hover:bg-indigo-800">
+                <span>12/12 (六)</span>
+                <span class="text-[10px] font-normal text-slate-400">表參道六本木</span>
+            </button>
+            <button onclick="switchDay(13)" id="tab-13" class="day-tab flex-shrink-0 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold transition flex flex-col items-center border border-slate-700 min-w-[85px] bg-indigo-900 text-slate-300 hover:bg-indigo-800">
+                <span>12/13 (日) ⭐</span>
+                <span class="text-[10px] font-normal text-slate-400">河口湖馬拉松</span>
+            </button>
+            <button onclick="switchDay(14)" id="tab-14" class="day-tab flex-shrink-0 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold transition flex flex-col items-center border border-slate-700 min-w-[85px] bg-indigo-900 text-slate-300 hover:bg-indigo-800">
+                <span>12/14 (一)</span>
+                <span class="text-[10px] font-normal text-slate-400">淺草銀座丸之內</span>
+            </button>
+            <button onclick="switchDay(15)" id="tab-15" class="day-tab flex-shrink-0 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold transition flex flex-col items-center border border-slate-700 min-w-[85px] bg-indigo-900 text-slate-300 hover:bg-indigo-800">
+                <span>12/15 (二)</span>
+                <span class="text-[10px] font-normal text-slate-400">晴空塔讀賣</span>
+            </button>
+            <button onclick="switchDay(16)" id="tab-16" class="day-tab flex-shrink-0 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold transition flex flex-col items-center border border-slate-700 min-w-[85px] bg-indigo-900 text-slate-300 hover:bg-indigo-800">
+                <span>12/16 (三)</span>
+                <span class="text-[10px] font-normal text-slate-400">目黑川散策</span>
+            </button>
+            <button onclick="switchDay(17)" id="tab-17" class="day-tab flex-shrink-0 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold transition flex flex-col items-center border border-slate-700 min-w-[85px] bg-indigo-900 text-slate-300 hover:bg-indigo-800">
+                <span>12/17 (四)</span>
+                <span class="text-[10px] font-normal text-slate-400">購物/成田酒店</span>
+            </button>
+            <button onclick="switchDay(18)" id="tab-18" class="day-tab flex-shrink-0 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold transition flex flex-col items-center border border-slate-700 min-w-[85px] bg-indigo-900 text-slate-300 hover:bg-indigo-800">
+                <span>12/18 (五) ✈️</span>
+                <span class="text-[10px] font-normal text-slate-400">酒酒井G1離境</span>
+            </button>
+            <button onclick="switchDay(19)" id="tab-19" class="day-tab flex-shrink-0 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold transition flex flex-col items-center border border-slate-700 min-w-[85px] bg-indigo-900 text-slate-300 hover:bg-indigo-800">
+                <span>12/19 (六) ✈️</span>
+                <span class="text-[10px] font-normal text-slate-400">成田山G2離境</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Main Dynamic Content Container -->
+    <main id="day-content" class="min-h-[500px]">
+        <!-- Dynamic Day content loaded via JavaScript -->
+    </main>
+
+    <!-- Slide-over Drawer / Modal for Featured Spot Details -->
+    <div id="drawer-backdrop" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-40 hidden opacity-0 transition-opacity duration-300" onclick="closeDrawer()"></div>
+    <div id="spot-drawer" class="fixed top-0 right-0 h-full w-full sm:w-[480px] bg-indigo-950 border-l border-gold-400/30 z-50 transform translate-x-full drawer-slide shadow-2xl flex flex-col">
+        <div class="p-4 border-b border-slate-700 flex items-center justify-between bg-indigo-900/80">
+            <div class="flex items-center gap-2">
+                <i class="fa-solid fa-map-location-dot text-gold-400 text-lg"></i>
+                <h3 id="drawer-title" class="font-bold text-white text-lg">景點詳情</h3>
+            </div>
+            <button onclick="closeDrawer()" class="text-slate-400 hover:text-white p-1 rounded-lg">
+                <i class="fa-solid fa-xmark text-xl"></i>
+            </button>
+        </div>
+        <div id="drawer-body" class="p-5 overflow-y-auto flex-1 space-y-4 text-sm text-slate-200">
+            <!-- Dynamic Drawer Content -->
+        </div>
+        <div class="p-4 border-t border-slate-800 bg-indigo-900/50 text-center">
+            <button onclick="closeDrawer()" class="w-full py-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold rounded-lg transition text-xs">
+                關閉側面板
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Database of Featured Spots with Details for Side Panel
+        const spotsDatabase = {
+            "小石川後樂園": {
+                title: "小石川後樂園 (Koishikawa Korakuen)",
+                tag: "歷史庭園 / 初冬銀杏殘楓",
+                hours: "09:00 - 17:00 (16:30最後入場)",
+                access: "JR水道橋站 (西口) 步行約 5 分鐘 / 後樂園站步行 8 分鐘",
+                fee: "門票：300 日圓",
+                highlights: [
+                    "東京最古老的江戶初期迴遊式築山泉水庭園。",
+                    "12月中旬可欣賞到池泉倒影與初冬沉靜的倒影美景。",
+                    "必拍：圓月橋（Reflection Bridge）、渡月橋與大泉水。"
+                ],
+                tip: "園區內環境安靜清幽，非常適合馬拉松前夕漫步放鬆心情。"
+            },
+            "東京巨蛋城": {
+                title: "東京巨蛋城 (Tokyo Dome City Illumination)",
+                tag: "冬季大型點燈 / LaQua購物",
+                hours: "點燈時間：17:00 - 24:00 (免費區域)",
+                access: "JR水道橋站 / 東京地鐵後樂園站直達",
+                fee: "免費參觀（遊樂設施另計）",
+                highlights: [
+                    "關東人氣數一數二的冬季市區點燈節目。",
+                    "長達數十公尺的光之隧道（Milky Way）極具浪漫氣氛。",
+                    "巨型聖誕樹與噴水池搭配發光摩天輪 Big O。"
+                ],
+                tip: "LaQua 商城高樓層與戶外露台是拍攝燈飾全景與用餐的絕佳地點。"
+            },
+            "明治神宮": {
+                title: "明治神宮 & 外苑銀杏大道 (Meiji Jingu & Gaien Ginkgo)",
+                tag: "神社參拜 / 黃金銀杏地氈",
+                hours: "日出至日落 (依月份調整)",
+                access: "JR山手線「原宿站」/「代代木站」步行即達",
+                fee: "免費參觀",
+                highlights: [
+                    "東京都內最神聖寧靜的鎮守之森，鳥居莊嚴宏偉。",
+                    "神宮外苑銀杏大道在12月中旬迎來金黃最美「銀杏地氈」時節。",
+                    "沿途落葉鋪滿金黃色地毯，是攝影與漫步的聖地。"
+                ],
+                tip: "建議早晨 9 點左右抵達，避開人潮並享受晨曦中的神宮清幽氣氛。"
+            },
+            "六本木之丘": {
+                title: "六本木之丘 (Roppongi Hills Keyakizaka)",
+                tag: "經典東京鐵塔夜景 / 櫸樹坂點燈",
+                hours: "燈飾時間：17:00 - 23:00",
+                access: "東京地鐵日比谷線 / 都營大江戶線「六本木站」直達",
+                fee: "免費參觀 (Mori Tower 展望台需購票)",
+                highlights: [
+                    "櫸樹坂大道 (Keyakizaka) 約80萬顆「SNOW & BLUE」LED銀白燈飾。",
+                    "道路盡頭正好框住浪漫點亮的紅色東京鐵塔。",
+                    "Mori Hills 周邊集結多家精品與高質感餐廳。"
+                ],
+                tip: "最佳拍照位置位於櫸樹坂天橋（Keyakizaka Complex Bridge）中央。"
+            },
+            "合羽橋道具街": {
+                title: "合羽橋道具街 (Kappabashi Kitchenware Street)",
+                tag: "下町風情 / 精緻餐具與食品模型",
+                hours: "約 09:00 - 17:00 (依店家而異)",
+                access: "地鐵銀座線「田原町站」步行 5 分鐘 / 淺草站步行 10 分鐘",
+                fee: "免費逛街",
+                highlights: [
+                    "日本最著名的專業廚具、日式餐具、漆器與烘焙模型一條街。",
+                    "獨一無二的仿真「食品模型」紀念品。",
+                    "巨型廚師頭像建築地標。"
+                ],
+                tip: "推薦挑選精緻的日式陶瓷碗盤或日本手工刀具作為伴手禮。"
+            },
+            "銀座金魚美術館": {
+                title: "ART AQUARIUM MUSEUM GINZA (銀座金魚美術館)",
+                tag: "夢幻光影藝術 / 銀座購物",
+                hours: "10:00 - 19:00 (以官網預約為準)",
+                access: "銀座三越 (Ginza Mitsukoshi) 新館 8 樓 / 地鐵銀座站直達",
+                fee: "門票約 2,300 - 2,500 日圓",
+                highlights: [
+                    "將日本傳統金魚文化與現代水槽光影音樂結合的藝術展覽。",
+                    "「金魚燈籠」與「金魚竹林」展區極具視覺震撼力。",
+                    "位於銀座正核心，看完展可直接在 Ginza Six / 阪急 shopping。"
+                ],
+                tip: "建議提前在官網購買預約票以省去現場排隊時間。"
+            },
+            "東京晴空塔": {
+                title: "東京晴空塔 (Tokyo Skytree & Solamachi)",
+                tag: "東京高空地標 / Solamachi 巨型購物中心",
+                hours: "展望台：10:00 - 21:00",
+                access: "東武晴空塔線 / 都營淺草線「押上 (晴空塔前) 站」直達",
+                fee: "展望台套票約 2,700 - 3,500 日圓",
+                highlights: [
+                    "350m 天望甲板與 450m 天望回廊，俯瞰全東京夜景與富士山遠景。",
+                    "塔下 Solamachi 擁有超過 300 家店舖、寶可夢中心與限量伴手禮店。"
+                ],
+                tip: "黃昏時段登塔可同時看到日落、富士山剪影與點燈初升的東京夜景。"
+            },
+            "目黑川沿岸": {
+                title: "目黑川沿岸 (Meguro River / Nakameguro)",
+                tag: "文青咖啡 / 設計小店 / 河畔散策",
+                hours: "全天開放 (店家多於 11:00 後營業)",
+                access: "東急東橫線 / 地鐵日比谷線「中目黑站」步行 1 分鐘",
+                fee: "免費散步",
+                highlights: [
+                    "雖然冬日沒有櫻花，但河畔散發著優雅安靜的文青氛圍。",
+                    "全球最大的星巴克臻選東京烘焙工坊 (Starbucks Reserve Roastery)。",
+                    "兩岸林立古著店、獨立設計師服飾與特色手沖咖啡廳。"
+                ],
+                tip: "賽後腿部放鬆的最佳平坦散步路線，累了可隨時找家河畔咖啡廳歇息。"
+            },
+            "成田山新勝寺": {
+                title: "成田山新勝寺與表參道 (Naritasan Shinshoji & Omotesando)",
+                tag: "千年名剎 / 江戶老街 / 百年現烤鰻魚飯",
+                hours: "寺廟 08:00 - 16:00 / 表參道店家約 10:00 - 16:30",
+                access: "JR 成田站 / 京成成田站步行約 10 分鐘即達表參道入口",
+                fee: "免費參拜",
+                highlights: [
+                    "擁有超過 1000 年歷史的日本重磅不動明王大本山。",
+                    "長達 1 公里的復古江戶表參道老街，空氣中飄散現烤鰻魚香。",
+                    "名店「川豐本店」、「駿河屋」現刨現烤醬燒鰻魚飯 (Unaju)。"
+                ],
+                tip: "離成田機場僅 10-15 分鐘車程！非常適合離境前最後半天走訪與午餐。"
+            }
+        };
+
+        // Complete 10 Days Itinerary Data
+        const itineraryData = {
+            10: {
+                date: "2026年12月10日 (星期四)",
+                title: "抵達東京新宿",
+                badge: "抵達日",
+                routeNodes: [
+                    { name: "各地機場", time: "下午飛機" },
+                    { name: "成田/羽田機場", time: "晚間抵達" },
+                    { name: "新宿酒店 Check-in", time: "22:00" }
+                ],
+                timeline: [
+                    {
+                        time: "22:00",
+                        location: "新宿酒店 Check-in",
+                        transport: "JR / 機場利木津巴士 / 京成電鐵",
+                        desc: "順利抵達東京新宿酒店，辦理入住登記，好好休息養精蓄銳，迎接接下來充實的 10 天東京馬拉松與燈飾之旅。",
+                        spotKey: null
+                    }
+                ]
+            },
+            11: {
+                date: "2026年12月11日 (星期五)",
+                title: "領取馬拉松物資、文藝銀杏與巨蛋夜景",
+                badge: "賽前報到 + 冬日點燈",
+                routeNodes: [
+                    { name: "新宿 Alpen", time: "09:30" },
+                    { name: "水道橋 (午餐)", time: "11:30" },
+                    { name: "小石川後樂園", time: "12:30" },
+                    { name: "秋葉原", time: "15:30" },
+                    { name: "東京巨蛋城", time: "17:00" }
+                ],
+                timeline: [
+                    {
+                        time: "09:30 - 11:30",
+                        location: "Alpen Tokyo (新宿)",
+                        transport: "新宿站東口步行 1 分鐘",
+                        desc: "前往 Alpen Tokyo 旗艦店領取河口湖馬拉松比賽物資（號碼布、晶片與紀念衫），並可在此補給能量膠與賽事裝備。",
+                        spotKey: null
+                    },
+                    {
+                        time: "11:30 - 12:30",
+                        location: "水道橋站周邊 (午餐 1 小時)",
+                        transport: "JR中央線快速 (新宿 ➔ 御茶之水) 轉 JR總武線 ➔ 水道橋站",
+                        desc: "抵達水道橋，於站前享用熱騰騰的日式拉麵或定食（推薦：勝本拉麵或 LaQua 輕食）。",
+                        spotKey: null
+                    },
+                    {
+                        time: "12:30 - 15:30",
+                        location: "小石川後樂園",
+                        transport: "從水道橋站步行約 5-8 分鐘",
+                        desc: "參觀這座東京最古老的江戶庭園，感受池泉水石與初冬殘留的金黃銀杏景緻。",
+                        spotKey: "小石川後樂園"
+                    },
+                    {
+                        time: "15:30 - 17:00",
+                        location: "秋葉原電器動漫街",
+                        transport: "JR總武線 (水道橋 ➔ 秋葉原 約 3 分鐘)",
+                        desc: "走訪 Yodobashi-Akiba 大型電器城與 Radio Kaikan 動漫周邊專賣店散步血拼。",
+                        spotKey: null
+                    },
+                    {
+                        time: "17:00 - 19:00",
+                        location: "東京巨蛋城 (Winter Illumination)",
+                        transport: "JR總武線 (秋葉原 ➔ 返回水道橋站)",
+                        desc: "返回巨蛋城，欣賞浪漫的光之隧道與巨型點燈聖誕樹，享受關東代表性冬季燈飾。",
+                        spotKey: "東京巨蛋城"
+                    },
+                    {
+                        time: "19:00 - 21:00",
+                        location: "LaQua 購物商城 (晚餐 2 小時)",
+                        transport: "步行 / JR總武線+中央線返回新宿",
+                        desc: "在 LaQua 商城景觀餐廳（如敘敘苑燒肉或和食）享用悠閒晚餐，隨後返回新宿酒店。",
+                        spotKey: null
+                    }
+                ]
+            },
+            12: {
+                date: "2026年12月12日 (星期六)",
+                title: "賽前輕鬆日：表參道購物與六本木燈飾",
+                badge: "明治神宮銀杏 + 浪漫鐵塔",
+                routeNodes: [
+                    { name: "明治神宮/原宿", time: "09:00" },
+                    { name: "表參道", time: "13:00" },
+                    { name: "六本木之丘", time: "17:00" },
+                    { name: "新宿酒店", time: "21:00" }
+                ],
+                timeline: [
+                    {
+                        time: "09:00 - 12:00",
+                        location: "明治神宮 & 神宮外苑銀杏大道",
+                        transport: "JR山手線 (新宿 ➔ 原宿站 約 3 分鐘)",
+                        desc: "參拜明治神宮，隨後漫步至神宮外苑，欣賞 12 月中旬絕美的金色銀杏地氈。",
+                        spotKey: "明治神宮"
+                    },
+                    {
+                        time: "12:00 - 13:00",
+                        location: "原宿/外苑前 (午餐 1 小時)",
+                        transport: "步行",
+                        desc: "於原宿或外苑前周邊咖啡廳/漢堡店享用午餐。",
+                        spotKey: null
+                    },
+                    {
+                        time: "13:00 - 17:00",
+                        location: "表參道 Hills & 青山商圈",
+                        transport: "步行",
+                        desc: "沿著表參道林蔭大道散步購物，逛精品店與潮流商場，賽前保持輕鬆步行節奏。",
+                        spotKey: null
+                    },
+                    {
+                        time: "17:00 - 19:00",
+                        location: "六本木之丘 (Roppongi Hills)",
+                        transport: "東京地鐵日比谷線 ➔ 六本木站",
+                        desc: "欣賞櫸樹坂大道標誌性的藍白 LED 燈飾與前方耀眼的東京鐵塔夜景。",
+                        spotKey: "六本木之丘"
+                    },
+                    {
+                        time: "19:00 - 21:00",
+                        location: "六本木之丘餐廳 (晚餐 2 小時)",
+                        transport: "都營大江戶線 (六本木 ➔ 直達新宿)",
+                        desc: "享用精緻晚餐，提前於 21:00 前返回新宿酒店休息，為明日河口湖馬拉松蓄積體力！",
+                        spotKey: null
+                    }
+                ]
+            },
+            13: {
+                date: "2026年12月13日 (星期日)",
+                title: "⭐️ 河口湖馬拉松決戰日",
+                badge: "⭐ 馬拉松賽事日",
+                routeNodes: [
+                    { name: "新宿出發", time: "清晨" },
+                    { name: "河口湖會場", time: "賽事應戰" },
+                    { name: "富士山伴跑", time: "完賽榮耀" },
+                    { name: "新宿慶功", time: "19:00" }
+                ],
+                timeline: [
+                    {
+                        time: "清晨 - 08:30",
+                        location: "前往河口湖馬拉松會場",
+                        transport: "直達馬拉松接駁專車 / 富士回遊號",
+                        desc: "清晨從新宿出發前往河口湖，抵達賽事會場準備寄物與熱身。",
+                        spotKey: null
+                    },
+                    {
+                        time: "09:00 - 15:00",
+                        location: "河口湖馬拉松大會 (Lake Kawaguchi)",
+                        transport: "雙腳跑奔",
+                        desc: "⭐️ 賽事正式起跑！沿著河口湖與西湖開跑，欣賞壯麗的冬日冠雪富士山，挑戰個人最佳成績！",
+                        spotKey: null
+                    },
+                    {
+                        time: "16:00 - 18:30",
+                        location: "領取完賽獎牌 ➔ 返回新宿",
+                        transport: "高速巴士 / 富士急行線 + JR中央線",
+                        desc: "領取完賽獎牌與毛巾，稍作拉筋與保暖後搭車返回新宿。",
+                        spotKey: null
+                    },
+                    {
+                        time: "19:00 - 21:00",
+                        location: "新宿馬拉松慶功宴 (晚餐 2 小時)",
+                        transport: "新宿市區",
+                        desc: "在新宿享用豐富的燒肉或火鍋大餐補給蛋白能量，慶祝順利完賽！",
+                        spotKey: null
+                    }
+                ]
+            },
+            14: {
+                date: "2026年12月14日 (星期一)",
+                title: "下町道具街、日比谷公園與丸之內燈飾",
+                badge: "賽後恢復 + 香檳金燈飾",
+                routeNodes: [
+                    { name: "合羽橋道具街", time: "09:30" },
+                    { name: "淺草 (午餐)", time: "12:00" },
+                    { name: "日比谷/銀座", time: "13:00" },
+                    { name: "東京站丸之內", time: "17:00" }
+                ],
+                timeline: [
+                    {
+                        time: "09:30 - 12:00",
+                        location: "淺草合羽橋道具街",
+                        transport: "JR中央線 (神田轉) ➔ 地鐵銀座線 淺草站/田原町站",
+                        desc: "賽後第一天以平坦慢步為主，挑選日式精緻陶瓷器、廚房道具與趣味食品模型。",
+                        spotKey: "合羽橋道具街"
+                    },
+                    {
+                        time: "12:00 - 13:00",
+                        location: "淺草下町美食 (午餐 1 小時)",
+                        transport: "步行",
+                        desc: "於淺草品嚐百年洋食、蕎麥麵或炸天婦羅蓋飯。",
+                        spotKey: null
+                    },
+                    {
+                        time: "13:00 - 17:00",
+                        location: "日比谷公園 & 銀座金魚美術館",
+                        transport: "東京地鐵銀座線 ➔ 日比谷站 / 銀座站",
+                        desc: "漫步日比谷公園，隨後參觀銀座三越內的 ART AQUARIUM 銀座金魚美術館與 Ginza Six 購物。",
+                        spotKey: "銀座金魚美術館"
+                    },
+                    {
+                        time: "17:00 - 19:00",
+                        location: "東京車站丸之內仲通 (Champagne Gold Illumination)",
+                        transport: "步行 5 分鐘抵達東京車站",
+                        desc: "漫步於點亮超過百萬顆香檳金色燈飾的丸之內仲通，拍攝浪漫的街道景致。",
+                        spotKey: null
+                    },
+                    {
+                        time: "19:00 - 21:00",
+                        location: "KITTE 大樓 / 丸大廈 (晚餐 2 小時)",
+                        transport: "JR中央線快速 (東京站 直達 新宿站 14分鐘)",
+                        desc: "在 KITTE 高樓層景觀餐廳享用晚餐，透過玻璃窗俯瞰東京車站古蹟紅白磚建築夜景。",
+                        spotKey: null
+                    }
+                ]
+            },
+            15: {
+                date: "2026年12月15日 (星期二)",
+                title: "清澄白河文青散策、晴空塔與讀賣樂園燈光秀",
+                badge: "咖啡散策 + 寶石點燈",
+                routeNodes: [
+                    { name: "清澄白河", time: "09:30" },
+                    { name: "東京晴空塔", time: "13:00" },
+                    { name: "讀賣樂園", time: "16:30" },
+                    { name: "新宿", time: "21:00" }
+                ],
+                timeline: [
+                    {
+                        time: "09:30 - 12:00",
+                        location: "清澄白河文青咖啡街",
+                        transport: "都營新宿線 ➔ 清澄白河站",
+                        desc: "漫步清澄庭園，品嚐 Blue Bottle 藍瓶咖啡日本一號店或當地特色手沖咖啡。",
+                        spotKey: null
+                    },
+                    {
+                        time: "12:00 - 13:00",
+                        location: "清澄白河輕食 (午餐 1 小時)",
+                        transport: "步行",
+                        desc: "在文青街區享用特色三明治或輕食早午餐。",
+                        spotKey: null
+                    },
+                    {
+                        time: "13:00 - 16:30",
+                        location: "東京晴空塔 & Solamachi",
+                        transport: "地鐵半藏門線 ➔ 押上 (晴空塔前) 站",
+                        desc: "登高天望甲板俯瞰關東平原，並在塔下 Solamachi 巨型商場盡情血拼買禮物。",
+                        spotKey: "東京晴空塔"
+                    },
+                    {
+                        time: "16:30 - 19:00",
+                        location: "讀賣樂園 (Jewellumination 寶石點燈)",
+                        transport: "回新宿轉乘 京王線特急 ➔ 京王讀賣樂園站 ➔ 纜車入園",
+                        desc: "體驗關東最大規模、由國際級燈光大師設計的 650萬顆寶石色 LED 璀璨燈光秀！",
+                        spotKey: null
+                    },
+                    {
+                        time: "19:00 - 21:00",
+                        location: "樂園特色餐廳 (晚餐 2 小時)",
+                        transport: "京王線返回新宿",
+                        desc: "在樂園內享用景觀晚餐，搭乘天空纜車俯瞰發光園區後返回新宿。",
+                        spotKey: null
+                    }
+                ]
+            },
+            16: {
+                date: "2026年12月16日 (星期三)",
+                title: "自由休閒與目黑川散策",
+                badge: "河畔咖啡 + 自由購物",
+                routeNodes: [
+                    { name: "中目黑", time: "10:00" },
+                    { name: "目黑川沿岸", time: "11:30" },
+                    { name: "星巴克臻選旗艦店", time: "14:00" },
+                    { name: "自由補貨/購物", time: "17:00" }
+                ],
+                timeline: [
+                    {
+                        time: "10:00 - 13:00",
+                        location: "目黑川沿岸 & 中目黑散策",
+                        transport: "JR山手線 (新宿 ➔ 惠比壽) 轉 地鐵日比谷線 ➔ 中目黑站",
+                        desc: "沿著優雅的目黑川河畔漫步，探索獨立服飾店、雜貨與古著專賣店。",
+                        spotKey: "目黑川沿岸"
+                    },
+                    {
+                        time: "13:00 - 14:00",
+                        location: "中目黑河畔餐廳 (午餐 1 小時)",
+                        transport: "步行",
+                        desc: "於中目黑高架下或河畔義式輕食餐廳享用午餐。",
+                        spotKey: null
+                    },
+                    {
+                        time: "14:00 - 16:30",
+                        location: "星巴克臻選東京烘焙工坊 (Starbucks Reserve)",
+                        transport: "步行",
+                        desc: "參觀全日本規模最大的星巴克旗艦店，品嚐限定手沖咖啡與現烤烘焙甜點。",
+                        spotKey: null
+                    },
+                    {
+                        time: "17:00 - 21:00",
+                        location: "自由補貨 / 澀谷或新宿購物 + 晚餐 2 小時",
+                        transport: "東急東橫線 / JR山手線",
+                        desc: "彈性安排前往澀谷 Shibuya Sky、宮下公園或返回新宿高島屋進行採購與晚餐。",
+                        spotKey: null
+                    }
+                ]
+            },
+            17: {
+                date: "2026年12月17日 (星期四)",
+                title: "賽後放鬆衝刺購物 ➔ 入住成田酒店",
+                badge: "市區大血拼 + 移動至成田",
+                routeNodes: [
+                    { name: "新宿商圈採買", time: "10:00" },
+                    { name: "市區午餐", time: "12:30" },
+                    { name: "藥妝與伴手禮", time: "14:00" },
+                    { name: "移動至成田酒店", time: "18:00" }
+                ],
+                timeline: [
+                    {
+                        time: "10:00 - 12:30",
+                        location: "新宿商圈大血拼 (伊勢丹 / 高島屋 / Lumine)",
+                        transport: "新宿市區步行",
+                        desc: "賽後肌肉恢復良好，集中在新宿各大百貨公司採購日本限定服飾、化妝品與精品。",
+                        spotKey: null
+                    },
+                    {
+                        time: "12:30 - 13:30",
+                        location: "新宿精緻午餐 (1 小時)",
+                        transport: "步行",
+                        desc: "享用炸牛排（勝牛/元村）或和牛壽喜燒午餐。",
+                        spotKey: null
+                    },
+                    {
+                        time: "13:30 - 17:30",
+                        location: "藥妝與伴手禮衝刺 (Donki / 松本清 / Bikkamera)",
+                        transport: "步行返回新宿酒店取行李",
+                        desc: "採買日本藥妝、保健品、零食伴手禮與電子產品，完成清單最後掃貨並領取寄放行李。",
+                        spotKey: null
+                    },
+                    {
+                        time: "18:00 - 21:00",
+                        location: "移動前往成田酒店 Check-in & 晚餐 2 小時",
+                        transport: "JR 成田特快 (N'EX) / 京成 Skyliner 直達成田區域",
+                        desc: "帶行李前往成田機場周邊酒店辦理入住 Check-in，享用悠閒晚餐並整理戰利品。",
+                        spotKey: null
+                    }
+                ]
+            },
+            18: {
+                date: "2026年12月18日 (星期五)",
+                title: "酒酒井 Outlet 購物 ➔ 第一組 (21:00pm) 離境 / 第二組入住成田",
+                badge: "Outlet 購物狂歡",
+                routeNodes: [
+                    { name: "成田出發", time: "09:30" },
+                    { name: "酒酒井 Outlet", time: "11:00" },
+                    { name: "G1 18:30成田機場", time: "21:00起飛" },
+                    { name: "G2 入住成田酒店", time: "休息" }
+                ],
+                timeline: [
+                    {
+                        time: "09:30 - 11:00",
+                        location: "成田酒店 ➔ 酒酒井 Outlet (Shisui Premium Outlets)",
+                        transport: "專車接送 / 高速巴士",
+                        desc: "從成田區域出發，前往離成田機場極近的酒酒井 Outlet。",
+                        spotKey: null
+                    },
+                    {
+                        time: "11:00 - 17:00",
+                        location: "酒酒井 Outlet 狂歡購物 (含 1 小時午餐)",
+                        transport: "園區內步行",
+                        desc: "盡情採購 Asics、Nike、Logos、Coach、G-Shock 等國際與日本在地名牌折扣品，行李可妥善寄存在 Outlet 儲物櫃。",
+                        spotKey: null
+                    },
+                    {
+                        time: "17:00 - 21:00 [第一組專屬]",
+                        location: "✈️ 第一組：前往成田機場 ➔ 21:00 班機起飛回香港",
+                        transport: "Outlet 直達巴士 (約 15 分鐘抵達航廈)",
+                        desc: "【第一組朋友】約 18:00-18:30 抵達航廈 Check-in 託運行李，於免稅店採購伴手禮，搭乘 21:00pm 班機順利歸國！",
+                        spotKey: null
+                    },
+                    {
+                        time: "18:00 - 21:00 [第二組專屬]",
+                        location: "🏨 第二組：返回成田酒店 Check-in & 晚餐 2 小時",
+                        transport: "接駁車 ➔ 成田酒店",
+                        desc: "【第二組朋友】隨後返回成田機場周邊酒店辦理入住，享用豐盛晚餐並整理戰利品打包行李。",
+                        spotKey: null
+                    }
+                ]
+            },
+            19: {
+                date: "2026年12月19日 (星期六)",
+                title: "【第二組】成田山新勝寺參拜、百年現烤鰻魚飯 ➔ 21:00pm 回港",
+                badge: "第二組離境半日遊",
+                routeNodes: [
+                    { name: "成田酒店", time: "09:30" },
+                    { name: "成田山新勝寺", time: "10:00" },
+                    { name: "表參道鰻魚飯", time: "12:00" },
+                    { name: "成田機場 Check-in", time: "18:30" },
+                    { name: "班機起飛", time: "21:00" }
+                ],
+                timeline: [
+                    {
+                        time: "09:30 - 12:00",
+                        location: "成田山新勝寺 & 1公里江戶表參道",
+                        transport: "酒店接駁車 / 京成線 ➔ 京成成田站 / JR成田站",
+                        desc: "最後一天造訪擁有千年歷史的日本不動明王大本山，漫步於濃厚江戶風情老街與美麗庭園。",
+                        spotKey: "成田山新勝寺"
+                    },
+                    {
+                        time: "12:00 - 13:30",
+                        location: "成田表參道百年鰻魚飯 (午餐 1.5 小時)",
+                        transport: "表參道老街步行",
+                        desc: "品嚐名店「川豐本店」或「駿河屋」現場炭火現烤、香氣四溢的醬燒鰻魚飯（Unaju）！",
+                        spotKey: null
+                    },
+                    {
+                        time: "14:00 - 18:00",
+                        location: "成田老街巡禮 / 永旺夢樂城 (Aeon Mall 成田)",
+                        transport: "表參道 / 巴士",
+                        desc: "午晚餐間可悠閒逛老街購買仙貝與土產，或到 Aeon Mall 做最後免稅零食補貨。",
+                        spotKey: null
+                    },
+                    {
+                        time: "18:30 - 21:00",
+                        location: "成田國際機場 Check-in ➔ 21:00 班機起飛 ✈️",
+                        transport: "電車 / 巴士 15 分鐘直達航廈",
+                        desc: "【第二組朋友】18:30 前抵達成田機場辦理登機手續，託運行李後於免稅店採購，搭乘 21:00pm 班機圓滿結束 10 天東京馬拉松燈飾之旅！",
+                        spotKey: null
+                    }
+                ]
+            }
+        };
+
+        let currentFlightGroup = 1;
+        let activeDay = 'all';
+
+        function setFlightGroup(groupNum) {
+            currentFlightGroup = groupNum;
+            const btn1 = document.getElementById('group-btn-1');
+            const btn2 = document.getElementById('group-btn-2');
+
+            if (groupNum === 1) {
+                btn1.className = "flex-1 sm:flex-none px-3 py-1.5 rounded-xl text-xs font-bold transition flex items-center justify-center gap-1.5 border border-gold-400/50 bg-gold-500 text-indigo-950 shadow";
+                btn2.className = "flex-1 sm:flex-none px-3 py-1.5 rounded-xl text-xs font-bold transition flex items-center justify-center gap-1.5 border border-slate-700 bg-indigo-900 text-slate-300 hover:bg-indigo-800";
+            } else {
+                btn2.className = "flex-1 sm:flex-none px-3 py-1.5 rounded-xl text-xs font-bold transition flex items-center justify-center gap-1.5 border border-gold-400/50 bg-gold-500 text-indigo-950 shadow";
+                btn1.className = "flex-1 sm:flex-none px-3 py-1.5 rounded-xl text-xs font-bold transition flex items-center justify-center gap-1.5 border border-slate-700 bg-indigo-900 text-slate-300 hover:bg-indigo-800";
+            }
+
+            renderContent(activeDay);
+        }
+
+        function renderSingleDayHTML(dayNum) {
+            const data = itineraryData[dayNum];
+            if (!data) return '';
+
+            let routeNodesHTML = '';
+            data.routeNodes.forEach((node, idx) => {
+                routeNodesHTML += `
+                    <div class="flex items-center">
+                        <div class="bg-indigo-900 border border-gold-400/50 px-3 py-1.5 rounded-xl text-center shadow">
+                            <div class="text-xs font-bold text-white">${node.name}</div>
+                            <div class="text-[10px] text-gold-300">${node.time}</div>
+                        </div>
+                        ${idx < data.routeNodes.length - 1 ? `
+                            <div class="px-2 text-gold-400 flex items-center">
+                                <i class="fa-solid fa-chevron-right text-xs"></i>
+                            </div>
+                        ` : ''}
+                    </div>
+                `;
+            });
+
+            let timelineHTML = '';
+            data.timeline.forEach((item) => {
+                const hasDrawer = item.spotKey && spotsDatabase[item.spotKey];
+                let isGroupSpecific = false;
+                if (dayNum === 18 && item.time.includes('第一組') && currentFlightGroup === 2) {
+                    isGroupSpecific = true;
+                }
+                if (dayNum === 18 && item.time.includes('第二組') && currentFlightGroup === 1) {
+                    isGroupSpecific = true;
+                }
+                if (dayNum === 19 && currentFlightGroup === 1) {
+                    isGroupSpecific = true;
+                }
+
+                timelineHTML += `
+                    <div class="relative z-10 mb-6 pl-8 sm:pl-12 ${isGroupSpecific ? 'opacity-35 grayscale' : ''}">
+                        <div class="absolute left-1 sm:left-2 top-1.5 w-5 h-5 rounded-full bg-indigo-950 border-4 ${hasDrawer ? 'border-gold-400' : 'border-slate-500'} flex items-center justify-center"></div>
+                        
+                        <div class="${hasDrawer ? 'glass-panel-gold' : 'glass-panel'} rounded-xl p-4 sm:p-5 transition duration-200">
+                            <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+                                <span class="px-2.5 py-0.5 rounded-full text-xs font-bold ${hasDrawer ? 'bg-gold-500/20 text-gold-300 border border-gold-400/40' : 'bg-slate-800 text-slate-300 border border-slate-700'}">
+                                    <i class="fa-regular fa-clock mr-1"></i> ${item.time}
+                                </span>
+                                <span class="text-xs text-slate-400"><i class="fa-solid fa-location-dot text-red-400"></i> ${item.location}</span>
+                            </div>
+
+                            <h3 class="text-base sm:text-lg font-bold text-white mb-2 flex items-center gap-2">
+                                ${item.location}
+                                ${hasDrawer ? `<span class="text-[11px] bg-gold-500 text-indigo-950 px-2 py-0.5 rounded-full font-bold">精選景點</span>` : ''}
+                            </h3>
+
+                            <p class="text-slate-300 text-xs sm:text-sm mb-3 leading-relaxed">
+                                ${item.desc}
+                            </p>
+
+                            ${hasDrawer ? `
+                                <button onclick="openDrawer('${item.spotKey}')" class="inline-flex items-center gap-1.5 px-3 py-1 bg-gold-500/10 hover:bg-gold-500/20 border border-gold-400/50 text-gold-300 text-xs font-bold rounded-lg transition mb-2">
+                                    <i class="fa-solid fa-circle-info"></i> 㩒一下打開側面板了解詳情 (${item.spotKey})
+                                </button>
+                            ` : ''}
+
+                            <div class="mt-2 bg-indigo-950/60 rounded-lg p-2 text-xs text-slate-300 flex items-center gap-2 border border-slate-800">
+                                <i class="fa-solid fa-train-subway text-gold-400"></i>
+                                <span><strong>交通方式：</strong> ${item.transport}</span>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+
+            if (dayNum === 19 && currentFlightGroup === 1) {
+                timelineHTML += `
+                    <div class="glass-panel rounded-xl p-6 text-center my-4">
+                        <i class="fa-solid fa-plane text-4xl text-gold-400 mb-3"></i>
+                        <h3 class="text-lg font-bold text-white mb-2">第一組行程已於昨日 (12/18 21:00) 圓滿結束回港</h3>
+                        <p class="text-xs text-slate-300">切換上方按鈕至「第二組」可預覽 12/19 成田山新勝寺半日遊。</p>
+                    </div>
+                `;
+            }
+
+            return `
+                <div class="mb-10">
+                    <div class="glass-panel rounded-2xl p-5 mb-6">
+                        <div class="flex flex-wrap items-center justify-between gap-3 mb-3">
+                            <div>
+                                <span class="px-3 py-1 bg-gold-500/20 text-gold-300 border border-gold-400/40 text-xs font-bold rounded-full">
+                                    ${data.badge}
+                                </span>
+                                <h2 class="text-xl sm:text-2xl font-extrabold text-white mt-1">
+                                    ${data.date}：${data.title}
+                                </h2>
+                            </div>
+                        </div>
+
+                        <div class="mt-4 pt-3 border-t border-slate-700/60">
+                            <div class="text-xs text-slate-400 mb-2 font-medium"><i class="fa-solid fa-route text-gold-400"></i> 移動順序 (Route Flow)</div>
+                            <div class="flex overflow-x-auto gap-1 pb-2 scrollbar-thin">
+                                ${routeNodesHTML}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="relative">
+                        <div class="absolute left-3.5 sm:left-4 top-2 bottom-2 w-0.5 bg-gradient-to-b from-gold-400 via-sky-400 to-indigo-800"></div>
+                        ${timelineHTML}
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderContent(dayKey) {
+            activeDay = dayKey;
+
+            document.querySelectorAll('.day-tab').forEach(tab => {
+                tab.classList.remove('bg-gold-500', 'text-indigo-950', 'shadow-lg');
+                tab.classList.add('bg-indigo-900', 'text-slate-300');
+            });
+            const activeTab = document.getElementById(`tab-${dayKey}`);
+            if (activeTab) {
+                activeTab.classList.remove('bg-indigo-900', 'text-slate-300');
+                activeTab.classList.add('bg-gold-500', 'text-indigo-950', 'shadow-lg');
+            }
+
+            const container = document.getElementById('day-content');
+
+            if (dayKey === 'all') {
+                let allHTML = '';
+                for (let d = 10; d <= 19; d++) {
+                    allHTML += renderSingleDayHTML(d);
+                }
+                container.innerHTML = allHTML;
+            } else {
+                container.innerHTML = renderSingleDayHTML(parseInt(dayKey));
+            }
+        }
+
+        function openDrawer(spotKey) {
+            const spot = spotsDatabase[spotKey];
+            if (!spot) return;
+
+            document.getElementById('drawer-title').innerText = spot.title;
+            let highlightsHTML = '';
+            spot.highlights.forEach(h => {
+                highlightsHTML += `<li class="flex items-start gap-2"><i class="fa-solid fa-check text-gold-400 mt-1"></i><span>${h}</span></li>`;
+            });
+
+            document.getElementById('drawer-body').innerHTML = `
+                <div class="space-y-4">
+                    <div class="inline-block px-3 py-1 bg-gold-500/20 text-gold-300 border border-gold-400/40 text-xs font-bold rounded-full">
+                        ${spot.tag}
+                    </div>
+                    <div class="bg-indigo-900/60 p-3.5 rounded-xl border border-slate-700 space-y-2 text-xs">
+                        <div class="flex items-center gap-2 text-slate-200">
+                            <i class="fa-regular fa-clock text-gold-400 w-4"></i>
+                            <span><strong>開放時間：</strong> ${spot.hours}</span>
+                        </div>
+                        <div class="flex items-center gap-2 text-slate-200">
+                            <i class="fa-solid fa-train text-sky-400 w-4"></i>
+                            <span><strong>交通指引：</strong> ${spot.access}</span>
+                        </div>
+                        <div class="flex items-center gap-2 text-slate-200">
+                            <i class="fa-solid fa-ticket text-emerald-400 w-4"></i>
+                            <span><strong>門票資訊：</strong> ${spot.fee}</span>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-white mb-2 text-xs uppercase tracking-wider text-gold-400">✨ 景點亮點與特色</h4>
+                        <ul class="space-y-2 text-xs text-slate-300">
+                            ${highlightsHTML}
+                        </ul>
+                    </div>
+                    <div class="bg-gold-500/10 border border-gold-400/30 p-3.5 rounded-xl text-xs text-gold-200">
+                        <strong>💡 達人小貼士：</strong> ${spot.tip}
+                    </div>
+                </div>
+            `;
+
+            document.getElementById('spot-drawer').classList.remove('translate-x-full');
+            document.getElementById('drawer-backdrop').classList.remove('hidden');
+            setTimeout(() => {
+                document.getElementById('drawer-backdrop').classList.remove('opacity-0');
+            }, 10);
+        }
+
+        function closeDrawer() {
+            document.getElementById('spot-drawer').classList.add('translate-x-full');
+            document.getElementById('drawer-backdrop').classList.add('opacity-0');
+            setTimeout(() => {
+                document.getElementById('drawer-backdrop').classList.add('hidden');
+            }, 300);
+        }
+
+        function switchDay(dayKey) {
+            renderContent(dayKey);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function shareItinerary() {
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText(window.location.href).then(() => {
+                    alert("網址已成功複製到剪貼簿！可貼至 LINE 或 WhatsApp 分享。");
+                }).catch(() => {
+                    alert("網址複製成功！");
+                });
+            } else {
+                alert("請複製瀏覽器網址分享給友人。");
+            }
+        }
+
+        window.onload = function() {
+            renderContent('all');
+        };
+    </script>
+</body>
+</html>
